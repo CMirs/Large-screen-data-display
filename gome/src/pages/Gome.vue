@@ -65,7 +65,7 @@
 <script>
 import echarts from "echarts";
 import axios from "axios";
-// import { dvScrollBoard } from '@jiaminghi/data-view'
+// import { dvScrollBoard } from '@jiaminghi/data-view' 
 require("../assets/map/china.json"); //引入地图
 // Vue.use(dvScrollBoard)
 import overlayGraph from "../components/overlayGraph.vue";
@@ -75,7 +75,7 @@ import circulationDistribution from "../components/circulationDistribution.vue";
 // import Lunbo from '../components/lunbo.vue';
 // import News from '../components/news.vue';
 // import Guild from '../components/Guild.vue';
-// import Top from '../components/reTop.vue';
+// import Top from '../components/reTop.vue'; 
 // import Srt from '../components/Script.vue';
 export default {
   data() {
@@ -137,7 +137,7 @@ export default {
   mounted() {
     console.log(this.$refs.chart1);
     this.initChart2();
-    // this.everyMonthListingDistribution();
+    // this.everyMonthListingDistribution(); 
     this.ceshi();
   },
   components: {
@@ -255,7 +255,6 @@ export default {
                 // width:5,
                 width: 1,
                 type: "solid",
-
                 shadowColor: "blue",
                 shadowBlur: 10,
                 shadowOffsetX: 2,
@@ -264,7 +263,6 @@ export default {
             },
             axisPointer: {
               //鼠标移到折线点上的设置
-
               type: "line",
               lineStyle: {
                 color: "#04CDF4"
@@ -287,7 +285,7 @@ export default {
               // show: true,
               // lineStyle: {
               //   // 使用深浅的间隔色
-              //   color: ["blue", "green"],
+              //   color: ["blue", "green"], 
               //   shadowColor: "green",
               //   shadowBlur: 10,
               //   type:'dashed'
@@ -304,7 +302,7 @@ export default {
               //坐标轴间隔线
               show: true,
               lineStyle: {
-                //   // 使用深浅的间隔色
+                //   // 使用深浅的间隔色 
                 color: "#1C4E8A",
                 shadowColor: "#1C4E8A",
                 shadowBlur: 10,
