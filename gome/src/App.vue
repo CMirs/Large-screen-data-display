@@ -24,8 +24,11 @@ export default {
     height: 100%;
   }
 html,body{
-    /* 100px=26.67vw */
-    font-size: 26.67vw;
+    /*     b
+    *1920宽：
+    19.2px=1vw 
+    100px约等于5.20833vw   */
+    font-size: 5.20833vw;
     height: 100%;
 }
 a{

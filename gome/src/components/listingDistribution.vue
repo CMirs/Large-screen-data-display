@@ -90,7 +90,10 @@ export default {
         legend: {
           right: 70, //位置
           itemWidth: 20, //图例标记的图形宽度
-          itemHeight: 20
+          itemHeight: 20,
+          textStyle:{
+            color:'#01EFFD'
+          }
         }, //图例组件
         tooltip: {},
         dataset: {
@@ -186,7 +189,7 @@ export default {
         // to a column of dataset.source by default.
         series: [
           {
-              barMinHeight:100,
+            
             type: "bar",
             barGap: 0, //不同系列的柱间距离
 

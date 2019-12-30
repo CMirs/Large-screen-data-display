@@ -4,14 +4,15 @@
       <header>中国菠萝产销对接大数据</header>
       <main class="top-data">
         <div class="t-data-left">
-          <span class="title">公司+渠道+订单</span>
+          <span class="title min-adjustment">公司+渠道+订单</span>
+          <!-- <data-carousel  /> -->
           <div class="china-over">
             <overlay-graph />
           </div>
         </div>
         <div class="t-data-center">
           <div class="t-data-center-top">
-            <span class="title">全国菠萝价格行情</span>
+            <span class="title min-adjustment">全国菠萝价格行情</span>
             <div class="zhexian">
               <div class="month-quotation">
                 <!-- <span class="month-title">近三十天价格行情</span> -->
@@ -33,7 +34,13 @@
           </div>
         </div>
         <div class="t-data-right">
-          <span class="title">公司+农户+基地</span>
+         
+               <span class="title min-adjustment">公司+农户+基地</span>
+         
+       
+            <div class="map">
+
+            </div>
         </div>
       </main>
       <main class="down-data">
@@ -65,9 +72,7 @@
 <script>
 import echarts from "echarts";
 import axios from "axios";
-// import { dvScrollBoard } from '@jiaminghi/data-view' 
-require("../assets/map/china.json"); //引入地图
-// Vue.use(dvScrollBoard)
+// import dataCarousel from "../components/dataCarousel.vue";
 import overlayGraph from "../components/overlayGraph.vue";
 import listingDistribution from "../components/listingDistribution.vue";
 import circulationDistribution from "../components/circulationDistribution.vue";
@@ -75,7 +80,7 @@ import circulationDistribution from "../components/circulationDistribution.vue";
 // import Lunbo from '../components/lunbo.vue';
 // import News from '../components/news.vue';
 // import Guild from '../components/Guild.vue';
-// import Top from '../components/reTop.vue'; 
+// import Top from '../components/reTop.vue';
 // import Srt from '../components/Script.vue';
 export default {
   data() {
@@ -137,13 +142,14 @@ export default {
   mounted() {
     console.log(this.$refs.chart1);
     this.initChart2();
-    // this.everyMonthListingDistribution(); 
+    // this.everyMonthListingDistribution();
     this.ceshi();
   },
   components: {
     overlayGraph,
     circulationDistribution,
-    listingDistribution
+    listingDistribution,
+    // dataCarousel
   },
   methods: {
     ceshi() {
@@ -156,7 +162,7 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
-    },
+    },//
     initChart2() {
       var base = +new Date(2016, 9, 3);
       var oneDay = 24 * 3600 * 1000;
@@ -285,7 +291,7 @@ export default {
               // show: true,
               // lineStyle: {
               //   // 使用深浅的间隔色
-              //   color: ["blue", "green"], 
+              //   color: ["blue", "green"],
               //   shadowColor: "green",
               //   shadowBlur: 10,
               //   type:'dashed'
@@ -302,7 +308,7 @@ export default {
               //坐标轴间隔线
               show: true,
               lineStyle: {
-                //   // 使用深浅的间隔色 
+                //   // 使用深浅的间隔色
                 color: "#1C4E8A",
                 shadowColor: "#1C4E8A",
                 shadowBlur: 10,
@@ -416,23 +422,27 @@ export default {
 }
 .container header {
   width: 100%;
-  height: 100px;
+  height: 1rem;
   text-align: center;
-  font-size: 40px;
-  line-height: 70px;
+  font-size: .4rem;
+  line-height: .7rem;
   color: #7efafc;
   background: url(../assets/img/header_bg.png) no-repeat center center;
   background-size: 100% 100%;
 }
 .container .title {
-  width: 264px;
-  height: 40px;
+  width: 2.64rem;
+  height: .4rem;
   /* background: rgba(22, 48, 128, 1); */
   /* border: 1px solid rgba(94, 220, 255, 1); */
-  font-size: 18px;
+  font-size: .18rem;
   text-align: center;
   color: rgba(222, 241, 255, 1);
-  margin-top: 10px;
+  margin-top:12px;
+}
+/* 用于微调title */
+.min-adjustment{
+  margin-top: .16rem!important;
 }
 .container .top-data {
   height: 60%;
@@ -446,6 +456,9 @@ export default {
   /* flex: 1; */
   height: 100%;
 }
+
+
+
 .top-data .t-data-left {
   margin-left: 1%;
   width: 32%;
@@ -497,15 +510,15 @@ export default {
 .t-data-center-top .zhexian .year-quotation {
   width: 50%;
   height: 100%;
-  padding-left: 22px;
+  padding-left: .22rem;
   display: flex;
   flex-direction: column;
 }
 .month-quotation .month-title,
 .year-quotation .year-title {
-  width: 130px;
-  height: 14px;
-  font-size: 14px;
+  width: 1.3rem;
+  height: .14rem;
+  font-size: .14rem;
   font-weight: bold;
   color: rgba(222, 241, 255, 1);
 }
@@ -523,11 +536,43 @@ export default {
 .top-data .t-data-right {
   margin-right: 1%;
   width: 32%;
+    display: flex;
+  flex-direction: column;
+  align-items: center;
   background: url(../assets/img/company_farmer_base.png) no-repeat center center;
   background-size: 100% 100%;
-  display: flex;
-  justify-content: center;
 }
+.t-data-right .map{
+  width: 95%;
+  height: 95%;
+  background:url('../assets/map1.png') no-repeat center 20%;
+  background-size: contain;
+  	animation:myfirst 10s infinite;
+	-webkit-animation:myfirst 10s  infinite; /* Safari and Chrome */
+  
+}
+/* 动画 */
+@keyframes myfirst
+{
+0% {  background:url('../assets/map1.png') no-repeat center 20%;
+  background-size: contain;}
+	50%{  background:url('../assets/map2.png') no-repeat center 20%;
+  background-size: contain;}
+	100%{  background:url('../assets/map1.png') no-repeat center 20%;
+  background-size: contain;}
+
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+	0% {  background:url('../assets/map1.png') no-repeat center 20%;
+  background-size: contain;}
+	50%{  background:url('../assets/map2.png') no-repeat center 20%;
+  background-size: contain;}
+	100%{  background:url('../assets/map1.png') no-repeat center 20%;
+  background-size: contain;}
+}
+
 .container .down-data {
   height: 35%;
   width: 100%;

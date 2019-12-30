@@ -458,6 +458,7 @@ export default {
               show: false
             }
           },
+          zoom:1.2,
           roam: true,
           itemStyle: {
             normal: {
@@ -494,6 +495,13 @@ export default {
               }
             }
           },
+          // {
+          //   type:'map',
+          //   map:'china',
+          //   // zoom:
+          //   layoutCenter:["100%","100%"],
+          //   layoutSize:200
+          // },
           {
             //
             name: "Top 5",
