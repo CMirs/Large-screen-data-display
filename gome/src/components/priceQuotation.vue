@@ -1,6 +1,6 @@
 <template>
 <div class="price-quotation" ref="month_quotation">
-
+<!--  -->
 </div>
 </template>
 <script>

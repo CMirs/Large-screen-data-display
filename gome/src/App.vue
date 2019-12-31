@@ -38,9 +38,9 @@ ul,li{
   list-style: none;
 }
 .purchase-scroll .dv-scroll-board .rows .row-item{
-  font-size: 22px!important;
+  font-size: .22rem!important;
 }
 .fruit-growers-scroll .dv-scroll-board .rows .row-item{
-  font-size: 18px!important;
+  font-size: .18rem!important;
 }
 </style>

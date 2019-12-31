@@ -596,7 +596,7 @@ export default {
   margin-left: 1%;
 }
 .down-data-main1 .purchase-scroll {
-  height: 92%;
+  height: 83%;
   width: 100%;
 }
 .purchase-scroll .dv-scroll-board {
