@@ -1,5 +1,7 @@
 <template>
-  <div class="overlay-graph" ref="overlayGraph"></div>
+  <div class="overlay-graph" ref="overlayGraph">
+   
+  </div>
 </template>
 <script>
 // import echarts from "echarts";

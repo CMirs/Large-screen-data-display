@@ -4,7 +4,7 @@ import App from './App.vue'
 import echarts from 'echarts'
 import china from './assets/map/china.json'
 echarts.registerMap('china',china)
-// 将自动注册所有组件为全局组件
+// 将自动注册所有组件为全局组件 
 import dataV from '@jiaminghi/data-view'
 
 Vue.use(dataV) 
@@ -18,8 +18,7 @@ Vue.config.productionTip = false
 import VueRouter from "vue-router"
 Vue.use(VueRouter)
 
-import Vuex from "vuex"
-Vue.use(Vuex)
+import store from './store'
 
 import Home from './pages/Gome.vue'
 // import Kind from './pages/Kind.vue'
@@ -88,56 +87,56 @@ const routes = [ {
     component:Home
   }]
 
-const store = new Vuex.Store({
-    state:{
-      navs:[{
-        icon:"el-icon-s-home icfon",
-        title:"首页",
-        path:"gome"
-   },{
-        icon:"el-icon-menu icfon",
-        title:"分类",
-        path:"kind"
-   },{
-        icon:"el-icon-sunset icfon",
-        title:"优选",
-        path:"youxuan"
-   },{
-        icon:"el-icon-shopping-cart-full icfon",
-        title:"购物车",
-        path:"cart"
-   },{
-        icon:"el-icon-s-custom icfon",
-        title:"我的",
-        path:"my"
-   }],
-   nav:0
-   },
-   mutations:{
-		editNav(state,data){
-			state.nav = data;
-		},
-//		addGoods(state,data){
-//			state.goods.push(data);
-//		}
-	},
-	actions:{
-		setNav(context,data){
-			context.commit('editNav',data);
-		},
-//		setGoods(context,data){
-//			context.commit('addGoods',data)
-//		}
-	},
-	getters:{
-		getNavs:state => {
-			return state.navs;
-		},
-		getNav:state => {
-			return state.nav;
-		}
-	}
-})
+// const store = new Vuex.Store({
+//     state:{
+//       navs:[{
+//         icon:"el-icon-s-home icfon",
+//         title:"首页",
+//         path:"gome"
+//    },{
+//         icon:"el-icon-menu icfon",
+//         title:"分类",
+//         path:"kind"
+//    },{
+//         icon:"el-icon-sunset icfon",
+//         title:"优选",
+//         path:"youxuan"
+//    },{
+//         icon:"el-icon-shopping-cart-full icfon",
+//         title:"购物车",
+//         path:"cart"
+//    },{
+//         icon:"el-icon-s-custom icfon",
+//         title:"我的",
+//         path:"my"
+//    }],
+//    nav:0
+//    },
+//    mutations:{
+// 		editNav(state,data){
+// 			state.nav = data;
+// 		},
+// //		addGoods(state,data){
+// //			state.goods.push(data);
+// //		}
+// 	},
+// 	actions:{
+// 		setNav(context,data){
+// 			context.commit('editNav',data);
+// 		},
+// //		setGoods(context,data){
+// //			context.commit('addGoods',data)
+// //		}
+// 	},
+// 	getters:{
+// 		getNavs:state => {
+// 			return state.navs;
+// 		},
+// 		getNav:state => {
+// 			return state.nav;
+// 		}
+// 	}
+// })
 
 const router = new VueRouter({
 	routes

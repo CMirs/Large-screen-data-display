@@ -1,10 +1,10 @@
 <template>
   <div id="home">
     <div class="container">
-      <header>中国菠萝产销对接大数据</header>
+      <header>中国菠萝产销对接大数据{{this.$store.state.count}}</header>
       <main class="top-data">
         <div class="t-data-left">
-          <span class="title min-adjustment">公司+渠道+订单</span>
+          <span class="title min-adjustment">公司+渠道+订单{{this.$store.getters.getStateCount}}</span>
           <!-- <data-carousel  /> -->
           <div class="china-over">
             <overlay-graph />
@@ -12,14 +12,16 @@
         </div>
         <div class="t-data-center">
           <div class="t-data-center-top">
-            <span class="title min-adjustment">全国菠萝价格行情</span>
+            <span class="title min-adjustment">全国菠萝价格行情<button @click="reductionFun">-</button><button @click="addFun">+</button></span>
             <div class="zhexian">
               <div class="month-quotation">
                 <!-- <span class="month-title">近三十天价格行情</span> -->
-                <div class="center" ref="month_quotation"></div>
+                <div class="center" >
+                  <price-quotation :biurefs="biurefs" :xTitle="xTitle" :yTitle="yTitle" :lineData="monthLineData" :xData="monthXData"></price-quotation>
+                </div>
               </div>
               <div class="year-quotation">
-                <!-- <span class="year-title">2019年价格行情</span> -->
+                <!-- <span class="year-title">2019年价格行情</span>  -->
                 <div class="center" ref="year_quotation"></div>
               </div>
             </div>
@@ -29,7 +31,7 @@
             <span class="title">产地菠萝每月上市分布</span>
             <div class="purchase"></div>
             <div class="listingDistribution">
-              <listing-distribution class="listingDistribution" />
+              <listing-distribution class="listingDistribution"  :ds="123"></listing-distribution>
             </div>
           </div>
         </div>
@@ -76,6 +78,8 @@ import axios from "axios";
 import overlayGraph from "../components/overlayGraph.vue";
 import listingDistribution from "../components/listingDistribution.vue";
 import circulationDistribution from "../components/circulationDistribution.vue";
+
+import priceQuotation from "../components/priceQuotation.vue";
 // import Gheader from '../components/Gheader.vue';
 // import Lunbo from '../components/lunbo.vue';
 // import News from '../components/news.vue';
@@ -85,6 +89,11 @@ import circulationDistribution from "../components/circulationDistribution.vue";
 export default {
   data() {
     return {
+      biurefs:'month_quotation',
+      xTitle:'(日份)',
+    yTitle:'近三十天价格行情',
+     monthLineData: [20.0, 35.0, 40.0, 25.0, 25.08, 78.0, 45.0],
+     monthXData:["1日", "5日", "10日", "15日", "20日", "25日", "30日"], 
       config1: {
         // header: ['时间', '病害信息', '数量', '标段'],
         data: [
@@ -141,7 +150,7 @@ export default {
   name: "ecahrts1",
   mounted() {
     console.log(this.$refs.chart1);
-    this.initChart2();
+    // this.initChart2();
     // this.everyMonthListingDistribution();
     this.ceshi();
   },
@@ -149,9 +158,19 @@ export default {
     overlayGraph,
     circulationDistribution,
     listingDistribution,
-    // dataCarousel
+   priceQuotation
   },
   methods: {
+    // store测试
+    addFun(){
+      // this.$store.commit('add') 
+      this.$store.dispatch('addFun')
+    },
+    reductionFun(){
+      var n = 10
+      this.$store.dispatch('reductionFun',n)
+      // this.$store.commit('reduction') 
+    },
     ceshi() {
       console.log("46545");
       axios

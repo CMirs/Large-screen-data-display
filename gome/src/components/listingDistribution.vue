@@ -1,6 +1,6 @@
 <template>
-    <div class="listing-distribution" ref="listingDistribution">
-
+    <div class="listing-distribution" ref="listingDistribution" >
+    
     </div>
 </template>
 <script>
@@ -80,7 +80,11 @@ export default {
           ]
         }
     },
+    props:{
+      ds:''
+    },
     mounted(){
+      console.log(this.$props.ds,"feduyewgfuy`")
   this.everyMonthListingDistribution();
     },
     methods:{
