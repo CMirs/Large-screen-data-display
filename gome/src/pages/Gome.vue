@@ -1,10 +1,10 @@
 <template>
   <div id="home">
     <div class="container">
-      <header>中国菠萝产销对接大数据{{this.$store.state.count}}</header>
+      <header>中国菠萝产销对接大数据</header>
       <main class="top-data">
         <div class="t-data-left">
-          <span class="title min-adjustment">公司+渠道+订单{{this.$store.getters.getStateCount}}</span>
+          <span class="title min-adjustment">公司+渠道+订单</span>
           <!-- <data-carousel  /> -->
           <div class="china-over">
             <overlay-graph />
@@ -12,17 +12,19 @@
         </div>
         <div class="t-data-center">
           <div class="t-data-center-top">
-            <span class="title min-adjustment">全国菠萝价格行情<button @click="reductionFun">-</button><button @click="addFun">+</button></span>
+            <span class="title min-adjustment">全国菠萝价格行情</span>
             <div class="zhexian">
               <div class="month-quotation">
-                <!-- <span class="month-title">近三十天价格行情</span> -->
+                <!-- <span class="month-title">近三十天价格行情</span>  -->
                 <div class="center" >
                   <price-quotation :biurefs="biurefs" :xTitle="xTitle" :yTitle="yTitle" :lineData="monthLineData" :xData="monthXData"></price-quotation>
                 </div>
               </div>
               <div class="year-quotation">
                 <!-- <span class="year-title">2019年价格行情</span>  -->
-                <div class="center" ref="year_quotation"></div>
+                <div class="center">
+                   <price-quotation  :xTitle="xYearTile" :yTitle="yYearTile" :lineData="yearLineData" :xData="yearXData"></price-quotation>
+                </div>
               </div>
             </div>
           </div>
@@ -89,11 +91,15 @@ import priceQuotation from "../components/priceQuotation.vue";
 export default {
   data() {
     return {
-      biurefs:'month_quotation',
-      xTitle:'(日份)',
-    yTitle:'近三十天价格行情',
+     biurefs:'month_quotation',
+     xTitle:'(日份)',
+     yTitle:'近三十天价格行情',
+     xYearTile:'(月份)',
+     yYearTile:'2019年价格行榜' ,
      monthLineData: [20.0, 35.0, 40.0, 25.0, 25.08, 78.0, 45.0],
      monthXData:["1日", "5日", "10日", "15日", "20日", "25日", "30日"], 
+     yearLineData: [20.0, 35.0, 40.0, 25.0, 25.08, 78.0, 45.0,76.0,67.0,43.0,98.1,16.0],
+      yearXData:["1", "2", "3", "4", "5", "6", "7","8","9","10","11","12"], 
       config1: {
         // header: ['时间', '病害信息', '数量', '标段'],
         data: [

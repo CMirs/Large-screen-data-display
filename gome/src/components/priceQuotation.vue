@@ -1,14 +1,20 @@
 <template>
-  <div class="price-quotation" :ref="{biurefs}">
+<div class="zehxian">
+   <div class="price-quotation" ref="month_quotation" v-if="ismonth">
   
   </div>
+  <div class="price-quotation"  ref="year_quotation" v-else></div>
+</div>
+ 
 </template>
 <script>
 import { stringify } from "querystring";
 import { type } from "os";
 export default {
   data() {
-    return {};
+    return {
+      ismonth:false
+    };
   },
   props: [
 
@@ -23,9 +29,20 @@ export default {
         'xData'
     
   ],
+  created(){
+  // console.log(this.$props,"折线图数据")
+  this.ismonth = this.$props.biurefs
+  console.log(this.ismonth,"判断渲染")
+  if(this.ismonth){
+    this.ismonth = true
+  }
+  },
   mounted() {
-       this.initChart2();
-      console.log(this.$props,"折线图数据")
+
+        this.initChart2();
+
+       
+    
    
   },
   methods: {
@@ -56,7 +73,7 @@ export default {
       //
       var option = {
         title: {
-          text: this.$props.xTitle,
+          text: this.$props.yTitle,
           textStyle: {
             color: "#DEF1FF",
             fontSize: 14
@@ -111,7 +128,7 @@ export default {
         },
         xAxis: [
           {
-            name: this.$props.yTitle,
+            name: this.$props.xTitle,
             // nameGap:20,//坐标轴名称与轴线之间的距离
             nameLocation: "start",
             type: "category",
@@ -164,7 +181,7 @@ export default {
               // }
             },
             boundaryGap: false,
-            data:[this.$props.xData]
+            data:this.$props.xData
           }
         ],
         //
@@ -222,13 +239,14 @@ export default {
                   },
                   {
                     offset: 1,
-                    color: "#0A357B" // 100% 处的颜色
+                    color: "#0A357B" // 100% 处的颜色 
                   }
                 ],
                 global: false // 缺省为 false
               }
             },
             lineStyle: {
+              width:1,
               color: "#04CDF4",
               shadowColor: "#04CDF4",
               shadowBlur: 10,
@@ -241,13 +259,17 @@ export default {
               }
             },
             areaStyle: { normal: {} },
-            data: [this.$props.lineData]
+            data: this.$props.lineData
           }
         ]
       };
       // 基于准备好的dom，初始化echarts实例
-      let biuref = this.$props.biurefs
-      var monthChart = this.$echarts.init(this.$refs.biuref);
+     if(this.ismonth){
+         var monthChart = this.$echarts.init(this.$refs.month_quotation);
+     }else{
+        var monthChart = this.$echarts.init(this.$refs.year_quotation);
+     }
+    
       // 使用刚指定的配置项和数据显示图表。
       monthChart.setOption(option);
 
@@ -268,7 +290,11 @@ export default {
 };
 </script>
 <style  scoped>
-.price-quotation{
+.zehxian{
+  width:100%;
+  height:100%
+}
+.zehxian .price-quotation{
     width: 100%;
     height: 100%;
 }
